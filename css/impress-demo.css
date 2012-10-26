@@ -250,6 +250,16 @@ a:focus {
     3D positioning along Z axis.
 */
 
+#intro .logo {
+    display: block;
+    margin: 33% auto;
+}
+
+#lightweigth {
+    text-align: center;
+}
+
+
 #title {
     padding: 0;
 }
