@@ -259,6 +259,16 @@ a:focus {
     text-align: center;
 }
 
+pre {
+    font-family: monospace;
+    font-size: 0.5em;
+}
+
+#view {
+    width: 700px;
+}
+
+
 
 #title {
     padding: 0;

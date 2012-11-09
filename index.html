@@ -62,7 +62,7 @@
 
     <div id="structure" class="step" data-x="1000" data-y="-1500">
         <q>Backbone.js gives <strong>structure</strong> to web application by providing JavaScript objects: <br/><br/>
-            They are needed to <strong>handle your data</strong>.</q>
+            They are needed to handle your <strong>data</strong>.</q>
     </div>
 
     <div id="data-matters" class="step" data-x="0" data-y="0" data-scale="4">
@@ -85,95 +85,95 @@
         and based on the <strong>power of CSS3 transforms and transitions</strong> in modern browsers.</p> -->
     </div>
 
-    <div id="rest" class="step" data-x="3500" data-y="2100" data-rotate="180" data-scale="6">
-        <p><strong>Better!</strong> <br/>
-            It connects your with existing <strong>API</strong> over a RESTful JSON interface.</p>
-    </div>
-
     <div id="lightweigth" class="step slide" data-x="2825" data-y="2325" data-z="-3000" data-rotate="300" data-scale="1">
         <h1>Backbone.js is lightweight!</h1>
         <p><small style="font-size: 0.8em;">only 5kB</small></p>
         <img class="little-backbone" src="backbone-graphic.png"/>
     </div>
 
-    <div id="ing" class="step" data-x="3500" data-y="-850" data-rotate="270" data-scale="6">
-        <p>by <b class="positioning">positioning</b>, <b class="rotating">rotating</b> and <b class="scaling">scaling</b> them on an infinite canvas</p>
+    <div id="code" class="step" data-x="3000" data-y="500" data-rotate="270" data-rotate-y="-30" data-scale="1">
+        Friends list example
+        <pre>
+(function ($) {
+
+    window.AppView = Backbone.View.extend({
+        el: $("body"),
+        events: {
+            "click #add-friend":  "showPrompt",
+        },
+        showPrompt: function () {
+            var friend_name = prompt("Who is your friend?");
+            // Do want you want
+        }
+    });
+    var appview = new AppView;
+
+})(jQuery);
+        </pre>
     </div>
 
-    <div id="imagination" class="step" data-x="6700" data-y="-300" data-scale="6">
-        <p>the only <b>limit</b> is your <b class="imagination">imagination</b></p>
+    <div id="models" class="step" data-x="3000" data-y="-500" data-rotate="270" data-rotate-x="-50" data-scale="1">
+        Here is the data structure
+        <pre>
+(function () {
+
+    var Friend = Backbone.Model.extend({
+        //Create a model to hold friend atribute
+        name: null
+    });
+
+    var Friends = Backbone.Collection.extend({
+        //This is our Friends collection and holds our Friend models
+        model: Friend
+    });
+
+})();
+        </pre>
     </div>
 
-    <div id="source" class="step" data-x="6300" data-y="2000" data-rotate="20" data-scale="4">
-        <p>want to know more?</p>
-        <q><a href="http://github.com/bartaz/impress.js">use the source</a>, Luke!</q>
+    <div id="view" class="step" data-x="4000" data-y="-500" data-rotate="270" data-rotate-y="30" data-scale="1">
+        <span>Your rember our "View" ?<span>
+        <pre>
+window.AppView = Backbone.View.extend({
+  // ...
+  showPrompt: function () {
+    var friend_name = prompt("Who is your friend?");
+    var friend_model = new Friend({ name: friend_name });
+    //Add a new friend model to our friend collection
+    this.friends.add( friend_model );
+  },
+  initialize: function() {
+    this.friends = new Friends();
+    this.friends.on('add', this.addFriendLi);
+  },
+  addFriendLi: function (model) {
+    var html = "&lt;li&gt;" + model.get('name') + "&lt;/li&gt;";
+    $("#friends-list").append(html);
+  }
+});
+var appview = new AppView;
+        </pre>
     </div>
 
-    <div id="one-more-thing" class="step" data-x="6000" data-y="4000" data-scale="2">
-        <p>one more thing...</p>
+    <div id="not-lost" class="step" data-x="6000" data-y="4000" data-scale="2">
+        <p>Not lost ?</p>
     </div>
 
-    <!--
-        
-        And the last one shows full power and flexibility of impress.js.
-        
-        You can not only position element in 3D, but also rotate it around any axis.
-        So this one here will get rotated by -40 degrees (40 degrees anticlockwise) around X axis and
-        10 degrees (clockwise) around Y axis.
-        
-        You can of course rotate it around Z axis with `data-rotate-z` - it has exactly the same effect
-        as `data-rotate` (these two are basically aliases).
-        
-    -->
-    <div id="its-in-3d" class="step" data-x="6200" data-y="4300" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
-        <p><span class="have">have</span> <span class="you">you</span> <span class="noticed">noticed</span> <span class="its">it's</span> <span class="in">in</span> <b>3D<sup>*</sup></b>?</p>
-        <span class="footnote">* beat that, prezi ;)</span>
+    <div id="rest" class="step" data-x="3800" data-y="2100" data-rotate="180" data-scale="6">
+        <p><strong>Better!</strong> <br/>
+            It connects your with existing <strong>API</strong> over a RESTful JSON interface.</p>
     </div>
 
-    <!--
-        
-        So to make a summary of all the possible attributes used to position presentation steps, we have:
-        
-        * `data-x`, `data-y`, `data-z` - they define the position of **the center** of step element on
-            the canvas in pixels; their default value is 0;
-        * `data-rotate-x`, `data-rotate-y`, 'data-rotate-z`, `data-rotate` - they define the rotation of
-            the element around given axis in degrees; their default value is 0; `data-rotate` and `data-rotate-z`
-            are exactly the same;
-        * `data-scale` - defines the scale of step element; default value is 1
-        
-        These values are used by impress.js in CSS transformation functions, so for more information consult
-        CSS transfrom docs: https://developer.mozilla.org/en/CSS/transform
-        
-    -->
+    <div id="anyone" class="step" data-x="3800" data-y="2100" data-rotate="180" data-scale="6">
+        <p><strong>Better!</strong> <br/>
+            It connects your with existing <strong>API</strong> over a RESTful JSON interface.</p>
+    </div>
+
     <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
     </div>
 
 </div>
 
-<!--
-    
-    Hint is not related to impress.js in any way.
-    
-    But it can show you how to use impress.js features in creative way.
-    
-    When the presentation step is shown (selected) its element gets the class of "active" and the body element
-    gets the class based on active step id `impress-on-ID` (where ID is the step's id)... It may not be
-    so clear because of all these "ids" in previous sentence, so for example when the first step (the one with
-    the id of `bored`) is active, body element gets a class of `impress-on-bored`.
-    
-    This class is used by this hint below. Check CSS file to see how it's shown with delayed CSS animation when
-    the first step of presentation is visible for a couple of seconds.
-    
-    ...
-    
-    And when it comes to this piece of JavaScript below ... kids, don't do this at home ;)
-    It's just a quick and dirty workaround to get different hint text for touch devices.
-    In a real world it should be at least placed in separate JS file ... and the touch content should be
-    probably just hidden somewhere in HTML - not hard-coded in the script.
-    
-    Just sayin' ;)
-    
--->
 <div class="hint">
     <p>Use a spacebar or arrow keys to navigate</p>
 </div>
